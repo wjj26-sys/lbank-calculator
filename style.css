@@ -1,0 +1,347 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: #202020;
+  font-family: Arial, sans-serif;
+  color: white;
+}
+
+.page {
+  display: flex;
+  gap: 28px;
+  padding: 24px;
+  align-items: flex-start;
+}
+
+/* 입력 패널 */
+.control-panel {
+  width: 300px;
+  padding: 20px;
+  background: #111;
+  border-radius: 16px;
+  position: sticky;
+  top: 20px;
+}
+
+.control-panel h2 {
+  margin: 0 0 18px;
+  font-size: 22px;
+}
+
+.control-panel label {
+  display: block;
+  margin-bottom: 14px;
+  font-size: 13px;
+  color: #cfcfcf;
+}
+
+.control-panel input,
+.control-panel select {
+  width: 100%;
+  margin-top: 6px;
+  padding: 10px;
+  border: 1px solid #333;
+  border-radius: 8px;
+  background: #222;
+  color: white;
+  font-size: 15px;
+}
+
+.button-row {
+  display: flex;
+  gap: 8px;
+  margin-top: 18px;
+}
+
+.button-row button {
+  flex: 1;
+  padding: 11px 8px;
+  border: 0;
+  border-radius: 8px;
+  background: #0ecb81;
+  color: #03130c;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.button-row button:hover {
+  filter: brightness(1.08);
+}
+
+.panel-divider {
+  border: 0;
+  height: 1px;
+  background: #2f2f2f;
+  margin: 18px 0;
+}
+
+/* 카드 */
+.capture-area {
+  position: relative;
+  width: 780px;
+  height: 1280px;
+  overflow: hidden;
+  background: #000;
+}
+
+.bg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  user-select: none;
+  pointer-events: none;
+}
+
+/* 이미지 숫자 공통 */
+.digit-row {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  line-height: 0;
+}
+
+.digit-row img {
+  display: block;
+  object-fit: contain;
+  image-rendering: auto;
+}
+
+/* 날짜 */
+.date-render {
+  top: 58px;
+  right: 40px;
+  gap: -2px;
+}
+
+.date-render img {
+  height: 20px;
+}
+
+.date-render .space {
+  width: 7px;
+}
+
+/* 포지션 */
+.position-render {
+  position: absolute;
+  left: 35px;
+  top: 242px;
+  height: 35px;
+  object-fit: contain;
+}
+
+/* 롱 / 숏 */
+.side-render {
+  position: absolute;
+  left: 293px;
+  top: 240px;
+  height: 38px;
+  object-fit: contain;
+}
+
+/* 레버리지: 숫자는 날짜 숫자 이미지, x는 폰트 */
+.leverage-render {
+  position: absolute;
+  left: 600px;
+  top: 231px;
+  display: flex;
+  align-items: flex-end;
+  gap: 1px;
+}
+
+.leverage-render img {
+  height: 24px;
+  display: block;
+}
+
+.lev-x {
+  color: #a5a5ac;
+  font-size: 30px;
+  line-height: 1;
+  font-family: Arial, sans-serif;
+  margin-left: -2px;
+  transform: translateY(3px);
+}
+
+/* 수익률 */
+.pnl-render {
+  left: 36px;
+  top: 357px;
+  gap: 1px;
+}
+
+.pnl-render img {
+  height: 32px;
+}
+
+/* 진입가 */
+.entry-render {
+  left: 35px;
+  top: 483px;
+  gap: -1px;
+}
+
+.entry-render img {
+  height: 27.5px;
+}
+
+/* 목표가 / 청산가 */
+.target-render {
+  left: 35px;
+  top: 608px;
+  gap: -1px;
+}
+
+.target-render img {
+  height: 27.5px;
+}
+
+/* 하단 코드 값 */
+/* 배경에 이미 Referral code:가 있으니까 값만 뒤에 붙이는 구조 */
+.code-value-render {
+  position: absolute;
+  left: 250px;
+  bottom: 108px;
+  display: flex;
+  align-items: center;
+  gap: -1px;
+}
+
+/* 코드 안 숫자 = 진입가/목표가 숫자 이미지 */
+.code-value-render img {
+  height: 27px;
+  display: block;
+}
+
+/* 코드 안 영어 = 폰트 */
+.code-letter {
+  color: #ffffff;
+  font-size: 33px;
+  line-height: 1;
+  font-weight: 500;
+  font-family: Arial, sans-serif;
+  letter-spacing: -0.5px;
+}
+
+/* 바코드 / QR */
+.qr-render {
+  position: absolute;
+  right: 21px;
+  bottom: 35px;
+  width: 128px;
+  height: 128px;
+  background: transparent;   /* 흰 박스 제거하고 싶으면 */
+  padding: 0;                /* 바깥 여백 제거 */
+  border: none;              /* 테두리 제거 */
+  outline: none;
+  box-shadow: none;
+}
+
+.qr-render img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  border: none;
+  outline: none;
+  box-shadow: none;
+}
+
+/* 작은 화면 대응 */
+@media (max-width: 1200px) {
+  .page {
+    flex-direction: column;
+  }
+
+  .control-panel {
+    position: relative;
+    width: 100%;
+  }
+}
+
+.control-panel input[type="date"],
+.control-panel input[type="time"] {
+  color-scheme: dark;
+}
+
+.control-panel input[type="date"]::-webkit-calendar-picker-indicator,
+.control-panel input[type="time"]::-webkit-calendar-picker-indicator {
+  filter: brightness(0) invert(1);
+  opacity: 1;
+  cursor: pointer;
+}
+
+/* 날짜 - */
+.date-dash {
+  height: 5px !important;
+  transform: translateY(2px);
+  margin-left: -1px;
+  margin-right: -1px;
+}
+
+/* 날짜 : */
+.date-colon {
+  height: 15px !important;
+  transform: translateY(0px);
+  margin-left: -1px;
+  margin-right: -1px;
+}
+
+/* 수익률 + */
+.pnl-plus {
+  height: 22px !important;
+  transform: translateY(0px);
+  margin-right: 2px;
+}
+
+/* 수익률 . */
+.pnl-dot {
+  height: 9px !important;
+  transform: translateY(12px);
+  margin-left: -1px;
+  margin-right: 0px;
+}
+
+/* 수익률 % */
+.pnl-percent {
+  height: 32px !important;
+  transform: translateY(0px);
+  margin-left: 3px;
+}
+
+/* 가격 , */
+.price-comma {
+  height: 13px !important;
+  transform: translateY(13px);
+  margin-left: -1px;
+  margin-right: 0px;
+}
+
+/* 가격 . */
+.price-dot {
+  height: 8px !important;
+  transform: translateY(11px);
+  margin-left: -1px;
+  margin-right: 0px;
+}
+
+.leverage-x-img {
+  height: 24px;
+  margin-left: 2px;
+  transform: translateY(-1px);
+}
+
+.code-number-img {
+  height: 28px;
+}
+
+.leverage-render .leverage-x-img {
+  height: 17px !important;        /* X 아이콘 크기 */
+  width: auto !important;
+  margin-left: -2px;               /* 숫자와 X 사이 간격 */
+  transform: translateY(-1px);    /* 위아래 위치 */
+}
